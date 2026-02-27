@@ -52,6 +52,10 @@ During development, run both `npm run dev` and `npm run mock` concurrently — t
 - Endpoints: `/employees`, `/departments`
 - Use this base URL in all RTK Query API slices during development
 
+## Third-Party Library Docs
+
+Always use context7 (`mcp__context7__resolve-library-id` + `mcp__context7__query-docs`) to check up-to-date documentation before implementing or modifying code that uses any third-party library — especially RTK Query, React Hook Form, Zod, and TanStack Table.
+
 ## Code Style
 
 Use comments sparingly. Only comment complex or non-obvious logic.
