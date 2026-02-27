@@ -1,7 +1,7 @@
 {
   "employees": [
     {
-      "id": 1,
+      "id": "1",
       "firstName": "Ana",
       "lastName": "García",
       "email": "ana.garcia@apsys.mx",
@@ -11,7 +11,7 @@
       "status": "active"
     },
     {
-      "id": 2,
+      "id": "2",
       "firstName": "Carlos",
       "lastName": "Mendoza",
       "email": "carlos.mendoza@apsys.mx",
@@ -21,7 +21,7 @@
       "status": "active"
     },
     {
-      "id": 3,
+      "id": "3",
       "firstName": "Sofía",
       "lastName": "Ramírez",
       "email": "sofia.ramirez@apsys.mx",
@@ -31,7 +31,7 @@
       "status": "active"
     },
     {
-      "id": 4,
+      "id": "4",
       "firstName": "Luis",
       "lastName": "Torres",
       "email": "luis.torres@apsys.mx",
@@ -41,7 +41,7 @@
       "status": "active"
     },
     {
-      "id": 5,
+      "id": "5",
       "firstName": "María",
       "lastName": "López",
       "email": "maria.lopez@apsys.mx",
@@ -51,7 +51,7 @@
       "status": "active"
     },
     {
-      "id": 6,
+      "id": "6",
       "firstName": "Roberto",
       "lastName": "Díaz",
       "email": "roberto.diaz@apsys.mx",
@@ -61,7 +61,7 @@
       "status": "active"
     },
     {
-      "id": 7,
+      "id": "7",
       "firstName": "Patricia",
       "lastName": "Hernández",
       "email": "patricia.hernandez@apsys.mx",
@@ -71,7 +71,7 @@
       "status": "inactive"
     },
     {
-      "id": 8,
+      "id": "8",
       "firstName": "Jorge",
       "lastName": "Vega",
       "email": "jorge.vega@apsys.mx",
@@ -81,7 +81,7 @@
       "status": "active"
     },
     {
-      "id": 9,
+      "id": "9",
       "firstName": "Alejandra",
       "lastName": "Reyes",
       "email": "alejandra.reyes@apsys.mx",
@@ -91,7 +91,7 @@
       "status": "active"
     },
     {
-      "id": 10,
+      "id": "10",
       "firstName": "Miguel",
       "lastName": "Cruz",
       "email": "miguel.cruz@apsys.mx",
@@ -99,14 +99,52 @@
       "department": "Analytics",
       "startDate": "2022-07-18",
       "status": "active"
+    },
+    {
+      "id": "b02e",
+      "firstName": "José",
+      "lastName": "Ortiz Cruz",
+      "email": "jose.ortiz@apsys.mx",
+      "position": "Ejmplo",
+      "department": "Operations",
+      "startDate": "2026-02-27",
+      "status": "active"
+    },
+    {
+      "id": "df8f",
+      "firstName": "José",
+      "lastName": "Ortiz Cruz",
+      "email": "jose.ortiz@apsys.mx",
+      "position": "tester",
+      "department": "Human Resources",
+      "startDate": "2026-02-28",
+      "status": "active"
     }
   ],
   "departments": [
-    { "id": 1, "name": "Engineering" },
-    { "id": 2, "name": "Design" },
-    { "id": 3, "name": "Operations" },
-    { "id": 4, "name": "Infrastructure" },
-    { "id": 5, "name": "Human Resources" },
-    { "id": 6, "name": "Analytics" }
+    {
+      "id": "1",
+      "name": "Engineering"
+    },
+    {
+      "id": "2",
+      "name": "Design"
+    },
+    {
+      "id": "3",
+      "name": "Operations"
+    },
+    {
+      "id": "4",
+      "name": "Infrastructure"
+    },
+    {
+      "id": "5",
+      "name": "Human Resources"
+    },
+    {
+      "id": "6",
+      "name": "Analytics"
+    }
   ]
 }
