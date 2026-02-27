@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useGetEmployeeByIdQuery } from "../data/employeesApi";
 import { StatusBadge } from "../../../shared/components/StatusBadge";
+import { EmployeeEditForm } from "./components/EmployeeEditForm";
 
 interface EmployeeDetailPageProps {
   employeeId: number;
@@ -7,23 +9,46 @@ interface EmployeeDetailPageProps {
 }
 
 export function EmployeeDetailPage({ employeeId, onBack }: EmployeeDetailPageProps) {
+  const [isEditing, setIsEditing] = useState(false);
   const { data: employee, isLoading, isError } = useGetEmployeeByIdQuery(employeeId);
 
   if (isLoading) return <p className="p-8">Loading...</p>;
   if (isError || !employee) return <p className="p-8 text-red-600">Employee not found.</p>;
 
+  if (isEditing) {
+    return (
+      <div className="p-8 max-w-xl">
+        <h2 className="text-xl font-semibold mb-6">
+          Edit {employee.firstName} {employee.lastName}
+        </h2>
+        <EmployeeEditForm
+          employee={employee}
+          onSaved={() => setIsEditing(false)}
+          onCancel={() => setIsEditing(false)}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="p-8 max-w-2xl">
-      <button
-        className="mb-6 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-sm"
-        onClick={onBack}
-      >
-        ← Back
-      </button>
-
-      <h2 className="text-xl font-semibold mb-6">
-        {employee.firstName} {employee.lastName}
-      </h2>
+      <div className="flex items-center gap-4 mb-6">
+        <button
+          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 text-sm"
+          onClick={onBack}
+        >
+          ← Back
+        </button>
+        <h2 className="text-xl font-semibold flex-1">
+          {employee.firstName} {employee.lastName}
+        </h2>
+        <button
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm"
+          onClick={() => setIsEditing(true)}
+        >
+          Edit
+        </button>
+      </div>
 
       <dl className="bg-white shadow rounded divide-y">
         {(
