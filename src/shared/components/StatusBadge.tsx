@@ -13,10 +13,12 @@ export function StatusBadge({ status }: StatusBadgeProps) {
   const dotClass =
     status === "active" ? "bg-green-500" : "bg-red-500";
 
+  const label = status === "active" ? "Active" : "Inactive";
+
   return (
-    <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium ${classes}`}>
-      <span className={`w-1.5 h-1.5 rounded-full ${dotClass}`} />
-      {status}
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-sm font-medium ${classes}`}>
+      <span aria-hidden="true" className={`w-2 h-2 rounded-full ${dotClass}`} />
+      {label}
     </span>
   );
 }
