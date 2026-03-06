@@ -1,11 +1,11 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
   type ColumnDef,
 } from "@tanstack/react-table";
-import { useGetEmployeesQuery, useDeleteEmployeeMutation } from "../data/employeesApi";
+import { useGetEmployeesQuery, useGetDepartmentsQuery, useDeleteEmployeeMutation } from "../data/employeesApi";
 import type { Employee } from "../domain/employee.types";
 import { StatusBadge } from "../../../shared/components/StatusBadge";
 
@@ -18,7 +18,14 @@ interface EmployeeListPageProps {
 
 export function EmployeeListPage({ onViewDetail, onCreateNew }: EmployeeListPageProps) {
   const { data: employees = [], isLoading, isError } = useGetEmployeesQuery();
+  const { data: departments = [] } = useGetDepartmentsQuery();
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("All");
   const [deleteEmployee, { isLoading: isDeleting }] = useDeleteEmployeeMutation();
+
+  const filtered =
+    selectedDepartment === "All"
+      ? employees
+      : employees.filter((e) => e.department === selectedDepartment);
 
   const handleDelete = (id: number, fullName: string) => {
     if (window.confirm(`Are you sure you want to delete ${fullName}? This action cannot be undone.`)) {
@@ -84,7 +91,7 @@ export function EmployeeListPage({ onViewDetail, onCreateNew }: EmployeeListPage
   );
 
   const table = useReactTable({
-    data: employees,
+    data: filtered,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
@@ -103,6 +110,21 @@ export function EmployeeListPage({ onViewDetail, onCreateNew }: EmployeeListPage
         >
           + Add Employee
         </button>
+      </div>
+
+      <div className="mb-4">
+        <select
+          value={selectedDepartment}
+          onChange={(e) => setSelectedDepartment(e.target.value)}
+          className="border border-gray-300 rounded px-3 py-2 text-sm"
+        >
+          <option value="All">All</option>
+          {departments.map((dept) => (
+            <option key={dept.id} value={dept.name}>
+              {dept.name}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="overflow-x-auto">
